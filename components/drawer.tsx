@@ -1,6 +1,5 @@
 import { View,Button, Pressable } from "react-native";
 import { Feather } from "@expo/vector-icons";
-
 import { MainView } from "../App";
 
 function Drawer({switchView}:{switchView:(view:MainView)=>void}) {
