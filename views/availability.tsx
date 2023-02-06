@@ -15,7 +15,7 @@ function Availability() {
         </Text>
 
         <View className=" border-black flex flex-col mt-4">
-          <Card/>
+          <Card preview={false}/>
           <DateTimeView />
         </View>
       </View>

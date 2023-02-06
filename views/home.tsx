@@ -10,7 +10,7 @@ function Home() {
       <HeadCount />
       <View className="mt-4 flex flex-col items-center">
         <Text className="text-2xl font-semibold mb-4">TODAY</Text>
-        <Card/>
+        <Card preview={true}/>
       </View>
     </View>
   );

@@ -1,18 +1,23 @@
 import { View, Text } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import clsx from "clsx";
 
-function Card() {
+
+function Card({preview}:{preview:boolean}) {
   return (
     <View className="flex flex-col w-full px-6 py-4 border border-black rounded-lg">
-      <View className="flex flex-row justify-between items-center">
+      <View className="flex flex-row justify-between items-center mb-4">
         <Text className="text-base font-semibold">4th February</Text>
-        <Feather name="edit" size={16} color="black" />
+        <View className="flex flex-row gap-4 ">
+          <Feather name="edit" size={16} color="black" />
+          <Feather name="trash" size={16} color="black" className="hidden"/>
+        </View>
       </View>
-      <View className="mt-4">
+      <View className="mt-4 gap-2">
         <View className="border border-black flex flex-row justify-center rounded-md">
           <Text className="text-base font-semibold py-1">09:30 - 14:30</Text>
         </View>
-        <View className="border border-black flex flex-row justify-center mt-2 rounded-md">
+        <View className="border border-black flex flex-row justify-center rounded-md">
           <Text className="text-base font-semibold py-1">16:30 - 21:30</Text>
         </View>
       </View>
