@@ -14,7 +14,7 @@ export default function App() {
   };
 
   return (
-    <View className="flex-1 flex-col items-center justify-between px-4 pt-16 pb-4">
+    <View className="flex-1 flex-col items-center justify-between px-4 pt-16 pb-4 border-2 border-blue-500">
       <StatusBar style="auto" />
       <Main view={view} />
       <Drawer switchView={switchView} />
