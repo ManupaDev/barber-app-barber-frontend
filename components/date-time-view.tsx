@@ -18,14 +18,11 @@ function DateTimeView() {
   const toggleShow = () => {
     setShow(true);
   };
-  
+
   return (
     <>
-      <Pressable className="mt-4">
-        <Text
-          onPress={toggleShow}
-          className="text-base font-semibold px-2 py-1 rounded border border-black text-center"
-        >
+      <Pressable className="mt-4" onPress={toggleShow}>
+        <Text className="text-base font-semibold px-2 py-1 rounded border border-black text-center">
           Choose A Date
         </Text>
       </Pressable>

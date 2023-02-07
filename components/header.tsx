@@ -10,7 +10,6 @@ function Header() {
     const clock = setInterval(()=>{
       const tick = new Date();
       setDate(tick);
-      console.log(tick);
     },60*1000); 
 
     return ()=>{
