@@ -23,3 +23,14 @@ export const createSlot = async (slot) => {
     throw new Error("Unable to connect to the server");
   }
 };
+
+export const deleteSlot = async (deletedSlot) => { 
+  const {id} = deletedSlot;
+  
+  try {
+    const res = await api.delete(`/slots/${id}`);
+    return res.data.deletedSlot;
+  } catch (error) {
+    throw new Error("Unable to connect to the server");
+  }
+};
