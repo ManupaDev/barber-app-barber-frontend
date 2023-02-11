@@ -1,10 +1,12 @@
-import { View, Text, Pressable } from "react-native";
+import { View,ScrollView, Text, Pressable } from "react-native";
 import Header from "../components/header";
 import { MaterialIcons, Feather } from "@expo/vector-icons";
+import SlotChip from "../components/slot-chip";
 
 function Settings() {
+  
   return (
-    <View className="w-full">
+    <ScrollView className="w-full border border-red-500">
       <Header />
       <View className="mt-4  border-black">
         <Text className="text-2xl font-semibold text-center">Settings</Text>
@@ -47,19 +49,12 @@ function Settings() {
               </Pressable>
             </View>
           </View>
+
+          
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 export default Settings;
-
-function SlotChip() {
-  return (
-    <View className="py-1 px-2 border border-black flex flex-row justify-between items-center rounded mt-2">
-      <Text className="text-base font-semibold">09:30 - 14:30</Text>
-      <MaterialIcons name="delete-outline" size={20} color="black" />
-    </View>
-  );
-}

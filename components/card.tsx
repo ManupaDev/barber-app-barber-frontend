@@ -12,7 +12,7 @@ function Card({preview,date}:{preview:boolean,date:Date}) {
       <View className="flex flex-row justify-between items-center mb-4">
         <Text className="text-base font-semibold">4th February</Text>
         <View className="flex flex-row gap-4 ">
-          <Feather name="edit" size={16} color="black" />
+          {/* <Feather name="edit" size={16} color="black" /> */}
           <Feather name="trash" size={16} color="black" className="hidden"/>
         </View>
       </View>

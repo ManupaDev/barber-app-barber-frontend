@@ -1,6 +1,6 @@
-import RNDateTimePicker from "@react-native-community/datetimepicker";
 import { useState } from "react";
 import { Pressable, Text } from "react-native";
+import DateTimePicker from "./date-time-picker";
 
 function DateTimeView({
   date,
@@ -17,12 +17,13 @@ function DateTimeView({
     <>
       <Pressable className="mt-4" onPress={toggleShow}>
         <Text className="text-base font-semibold px-2 py-1 rounded border border-black text-center">
-          Choose A Date
+          Choose a Date
         </Text>
       </Pressable>
       <DateTimePicker
         show={show}
         date={date}
+        mode="date"
         handleDateChange={handleDateChange}
       />
     </>
@@ -30,26 +31,3 @@ function DateTimeView({
 }
 
 export default DateTimeView;
-
-function DateTimePicker({
-  show,
-  date,
-  handleDateChange,
-}: {
-  show: boolean;
-  date: Date;
-  handleDateChange: any;
-}) {
-  if (show) {
-    return (
-      <RNDateTimePicker
-        value={date}
-        mode="date"
-        is24Hour={true}
-        onChange={handleDateChange}
-      />
-    );
-  } else {
-    return null;
-  }
-}
