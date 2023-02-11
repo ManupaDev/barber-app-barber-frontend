@@ -2,23 +2,17 @@ import RNDateTimePicker from "@react-native-community/datetimepicker";
 import { useState } from "react";
 import { Pressable, Text } from "react-native";
 
-function DateTimeView() {
-  const [date, setDate] = useState(new Date());
-  const [show, setShow] = useState(false);
-
-  const handleDateChange = (e: any, selectedDate: Date) => {
-    if (e.type === "set") {
-      setDate(selectedDate);
-      setShow(false);
-    } else if (e.type === "dismissed") {
-      setShow(false);
-    }
-  };
-
-  const toggleShow = () => {
-    setShow(true);
-  };
-
+function DateTimeView({
+  date,
+  show,
+  handleDateChange,
+  toggleShow,
+}: {
+  date: Date;
+  show: boolean;
+  handleDateChange: any;
+  toggleShow: any;
+}) {
   return (
     <>
       <Pressable className="mt-4" onPress={toggleShow}>

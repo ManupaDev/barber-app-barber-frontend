@@ -3,7 +3,10 @@ import { Feather } from "@expo/vector-icons";
 import clsx from "clsx";
 
 
-function Card({preview}:{preview:boolean}) {
+function Card({preview,date}:{preview:boolean,date:Date}) {
+
+  // TODO: use date to get slots and render
+
   return (
     <View className="flex flex-col w-full px-6 py-4 border border-black rounded-lg">
       <View className="flex flex-row justify-between items-center mb-4">
