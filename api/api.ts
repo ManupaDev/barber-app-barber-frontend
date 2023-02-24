@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://192.168.1.3:8000/api",
+  baseURL: "http://172.20.10.4:8000/api",
 });
 
 export const getAllSlots = async () => {

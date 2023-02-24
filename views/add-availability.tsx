@@ -62,7 +62,7 @@ function AddAvailability({
           />
           <Text className="font-semibold text-lg mt-4">Add the slots</Text>
           <View>
-            <SlotChip />
+            <SlotChip slot={{id:13,stime:"2023-02-24T03:00:28.550Z",etime:"2023-02-24T07:00:28.550Z"}} />
             <SelectList
               boxStyles={{ borderRadius: 4, padding: 4, marginTop: 8 }}
               inputStyles={{ fontSize: 16, fontWeight: "500" }}
