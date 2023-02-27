@@ -6,6 +6,7 @@ import { createSlot, getAllSlots } from "../api/api";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import { useState } from "react";
 import DateTimePicker from "../components/date-time-picker";
+import Slots from "../components/slots";
 
 function Settings() {
   const queryClient = useQueryClient();
@@ -30,7 +31,7 @@ function Settings() {
   
 
   return (
-    <ScrollView className="w-full border border-red-500">
+    <View className="w-full border border-red-500">
       <Header />
       <View className="mt-4  border-black">
         <Text className="text-2xl font-semibold text-center">Settings</Text>
@@ -67,46 +68,13 @@ function Settings() {
           </View>
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
 export default Settings;
 
-function Slots() {
-  const { isLoading, isError, data, error } = useQuery("slots", getAllSlots);
-  if (isLoading) {
-    return (
-      <View className=" border-black ">
-        <Text>Loading</Text>
-      </View>
-    );
-  }
 
-  if (isError) {
-    return (
-      <View className=" border-black ">
-        <Text>Unable to connect to the server</Text>
-      </View>
-    );
-  }
-
-  if (data.length === 0) {
-    return (
-      <View className=" border-black ">
-        <Text className="font-semibold text-base">No Slots Added.</Text>
-      </View>
-    );
-  }
-
-  return (
-    <View className=" border-black ">
-      {data.map((slot) => {
-        return <SlotChip key={slot.id} slot={slot} />;
-      })}
-    </View>
-  );
-}
 
 function TimeSelect({
   time,
@@ -122,6 +90,7 @@ function TimeSelect({
     minute: "2-digit",
     hour12: false,
   });
+  
 
   const handleDateChange = (e: any, selectedDate: Date) => {
     if (e.type === "set") {

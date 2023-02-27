@@ -6,8 +6,7 @@ import DateTimeView from "../components/date-time-view";
 import { MainView } from "../App";
 import { useState } from "react";
 import { SelectList } from "react-native-dropdown-select-list";
-import SlotChip from "../components/slot-chip";
-
+import SelectableSlots from "../components/selectable-slots";
 function AddAvailability({
   switchView,
 }: {
@@ -16,18 +15,19 @@ function AddAvailability({
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
 
-  const [selected, setSelected] = useState("");
+  const [selectedSlots, setSelectedSlots] = useState(new Map());
 
-  //TODO Fetch the data from the server
-  const data = [
-    { key: "1", value: "Mobiles" },
-    { key: "2", value: "Appliances" },
-    { key: "3", value: "Cameras" },
-    { key: "4", value: "Computers" },
-    { key: "5", value: "Vegetables" },
-    { key: "6", value: "Diary Products" },
-    { key: "7", value: "Drinks" },
-  ];
+  const toggleSlotSelection = (id, slot) => {
+    if (selectedSlots.has(id)) {
+      const temp = new Map(selectedSlots);
+      temp.delete(id);
+      setSelectedSlots(temp);
+    } else {
+      const temp = new Map(selectedSlots);
+      temp.set(id, slot);
+      setSelectedSlots(temp);
+    }
+  };
 
   const handleDateChange = (e: any, selectedDate: Date) => {
     if (e.type === "set") {
@@ -60,29 +60,9 @@ function AddAvailability({
             handleDateChange={handleDateChange}
             toggleShow={toggleShow}
           />
-          <Text className="font-semibold text-lg mt-4">Add the slots</Text>
+          <Text className="font-semibold text-lg mt-4">Select the slots</Text>
           <View>
-            <SlotChip slot={{id:13,stime:"2023-02-24T03:00:28.550Z",etime:"2023-02-24T07:00:28.550Z"}} />
-            <SelectList
-              boxStyles={{ borderRadius: 4, padding: 4, marginTop: 8 }}
-              inputStyles={{ fontSize: 16, fontWeight: "500" }}
-              dropdownTextStyles={{ fontSize: 16, fontWeight: "500" }}
-              dropdownStyles={{ borderRadius: 4, padding: 4 }}
-              setSelected={(val) => setSelected(val)}
-              data={data}
-              save="value"
-              search={false}
-            />
-            <Pressable
-              className="mt-4"
-              onPress={() => {
-                switchView("add-availability");
-              }}
-            >
-              <Text className="text-base font-semibold px-2 py-1 W-1/2 rounded border border-black text-center">
-                ADD SLOT
-              </Text>
-            </Pressable>
+            <SelectableSlots toggleSlotSelection={toggleSlotSelection} />
           </View>
           <View className="w-full flex flex-row  border-black">
             <Pressable
@@ -92,12 +72,12 @@ function AddAvailability({
               }}
             >
               <Text className="text-base font-semibold px-2 py-1 rounded border border-black text-center">
-                CANCEL
+                Cancel
               </Text>
             </Pressable>
             <Pressable className="mt-4" onPress={() => {}}>
               <Text className="text-base font-semibold px-2 py-1 ml-4 rounded border border-black text-center">
-                ADD AVAILABILITY
+                Add Availability
               </Text>
             </Pressable>
           </View>
@@ -108,4 +88,3 @@ function AddAvailability({
 }
 
 export default AddAvailability;
-
