@@ -31,7 +31,7 @@ function Settings() {
   
 
   return (
-    <View className="w-full border border-red-500">
+    <View className="w-full  border-red-500">
       <Header />
       <View className="mt-4  border-black">
         <Text className="text-2xl font-semibold text-center">Settings</Text>
@@ -45,7 +45,7 @@ function Settings() {
 
           <View className="mt-4">
             <Text className="text-xl font-semibold">Add a new slot</Text>
-            <View className="px-4 py-4 border mt-2 border-black rounded-lg">
+            <View className="  mt-2 border-black rounded-lg">
               <Text className="text-base font-semibold">Start Time</Text>
 
               <TimeSelect time={stime} handleTimeUpdate={handleStimeUpdate} />

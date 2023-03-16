@@ -7,6 +7,8 @@ import { MainView } from "../App";
 import { useState } from "react";
 import { SelectList } from "react-native-dropdown-select-list";
 import SelectableSlots from "../components/selectable-slots";
+import { createAvailability } from "../api/api";
+
 function AddAvailability({
   switchView,
 }: {
@@ -24,10 +26,21 @@ function AddAvailability({
       setSelectedSlots(temp);
     } else {
       const temp = new Map(selectedSlots);
-      temp.set(id, slot);
+      temp.set(id, id);
       setSelectedSlots(temp);
     }
   };
+
+  const handleAddAvailability = async () =>{
+    if(selectedSlots.size === 0) {
+      console.log("Please select at least one slot");
+
+    }else{
+      console.log(selectedSlots);
+      await createAvailability({on:date, slots:Array.from(selectedSlots.keys())})
+    }
+
+  }
 
   const handleDateChange = (e: any, selectedDate: Date) => {
     if (e.type === "set") {
@@ -76,7 +89,7 @@ function AddAvailability({
               </Text>
             </Pressable>
             <Pressable className="mt-4" onPress={() => {}}>
-              <Text className="text-base font-semibold px-2 py-1 ml-4 rounded border border-black text-center">
+              <Text onPress={handleAddAvailability} className="text-base font-semibold px-2 py-1 ml-4 rounded border border-black text-center">
                 Add Availability
               </Text>
             </Pressable>
