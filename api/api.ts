@@ -37,7 +37,6 @@ export const deleteSlot = async (deletedSlot) => {
 
 export const createAvailability = async (availability) => {
   console.log(availability);
-  
   try {
     const res = await api.post("/availabilities", availability);
     return res.data.newAvailability;

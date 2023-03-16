@@ -5,16 +5,18 @@ import Card from "../components/card";
 import DateTimeView from "../components/date-time-view";
 import { useState } from "react";
 import { MainView } from "../App";
+import dayjs from "dayjs";
+
 
 function Availability({
   switchView,
 }: {
   switchView: (view: MainView) => void;
 }) {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(dayjs());
   const [show, setShow] = useState(false);
 
-  const handleDateChange = (e: any, selectedDate: Date) => {
+  const handleDateChange = (e: any, selectedDate: dayjs.Dayjs) => {
     if (e.type === "set") {
       setDate(selectedDate);
       setShow(false);

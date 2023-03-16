@@ -1,4 +1,5 @@
 import RNDateTimePicker from "@react-native-community/datetimepicker";
+import dayjs from "dayjs";
 
 function DateTimePicker({
     show,
@@ -7,14 +8,14 @@ function DateTimePicker({
     handleDateChange,
   }: {
     show: boolean;
-    date: Date;
+    date: dayjs.Dayjs;
     mode:any;
     handleDateChange: any;
   }) {
     if (show) {
       return (
         <RNDateTimePicker
-          value={date}
+          value={date.toDate()}
           mode={mode}
           is24Hour={true}
           onChange={handleDateChange}

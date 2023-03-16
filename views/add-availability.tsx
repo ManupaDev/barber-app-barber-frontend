@@ -8,13 +8,14 @@ import { useState } from "react";
 import { SelectList } from "react-native-dropdown-select-list";
 import SelectableSlots from "../components/selectable-slots";
 import { createAvailability } from "../api/api";
+import dayjs from "dayjs";
 
 function AddAvailability({
   switchView,
 }: {
   switchView: (view: MainView) => void;
 }) {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(dayjs());
   const [show, setShow] = useState(false);
 
   const [selectedSlots, setSelectedSlots] = useState(new Map());
@@ -44,7 +45,7 @@ function AddAvailability({
 
   const handleDateChange = (e: any, selectedDate: Date) => {
     if (e.type === "set") {
-      setDate(selectedDate);
+      setDate(dayjs(selectedDate));
       setShow(false);
     } else if (e.type === "dismissed") {
       setShow(false);
@@ -65,7 +66,7 @@ function AddAvailability({
 
         <View className="  border-black flex flex-col ">
           <Text className="font-semibold text-lg">
-            {date.toLocaleDateString()}
+            {date.toDate().toLocaleDateString()}
           </Text>
           <DateTimeView
             date={date}

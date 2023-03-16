@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { Pressable, Text } from "react-native";
 import DateTimePicker from "./date-time-picker";
-
+import dayjs from "dayjs"
+;
 function DateTimeView({
   date,
   show,
   handleDateChange,
   toggleShow,
 }: {
-  date: Date;
+  date: dayjs.Dayjs;
   show: boolean;
   handleDateChange: any;
   toggleShow: any;

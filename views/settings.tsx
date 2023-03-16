@@ -7,18 +7,19 @@ import { useQuery, useMutation, useQueryClient } from "react-query";
 import { useState } from "react";
 import DateTimePicker from "../components/date-time-picker";
 import Slots from "../components/slots";
+import dayjs from "dayjs";
 
 function Settings() {
   const queryClient = useQueryClient();
 
-  const [stime, setStime] = useState(new Date());
-  const [etime, setEtime] = useState(new Date());
+  const [stime, setStime] = useState(dayjs());
+  const [etime, setEtime] = useState(dayjs());
 
-  const handleStimeUpdate = (newStime: Date) => {
+  const handleStimeUpdate = (newStime: dayjs.Dayjs) => {
     setStime(newStime);
   };
 
-  const handleEtimeUpdate = (newEtime: Date) => {
+  const handleEtimeUpdate = (newEtime: dayjs.Dayjs) => {
     setEtime(newEtime);
   };
 
@@ -75,26 +76,21 @@ function Settings() {
 export default Settings;
 
 
-
 function TimeSelect({
   time,
   handleTimeUpdate,
 }: {
-  time: Date;
+  time: dayjs.Dayjs;
   handleTimeUpdate: any;
 }) {
   const [show, setShow] = useState(false);
   
-  const formattedDate = time.toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  });
+  const formattedDate = time.format("HH:mm")
   
 
   const handleDateChange = (e: any, selectedDate: Date) => {
     if (e.type === "set") {
-      handleTimeUpdate(selectedDate);
+      handleTimeUpdate(dayjs(selectedDate));
       setShow(false);
     } else if (e.type === "dismissed") {
       setShow(false);

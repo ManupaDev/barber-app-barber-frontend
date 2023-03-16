@@ -2,9 +2,10 @@ import { View, Text } from "react-native";
 import Header from "../components/header";
 import HeadCount from "../components/head-count";
 import Card from "../components/card";
+import dayjs from "dayjs";
 
 function Home() {
-  const date = new Date();
+  const date = dayjs();
 
   return (
     <View className="w-full">

@@ -1,9 +1,9 @@
 import { View, Text } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import clsx from "clsx";
+import dayjs from "dayjs"
 
-
-function Card({preview,date}:{preview:boolean,date:Date}) {
+function Card({preview,date}:{preview:boolean,date:dayjs.Dayjs}) {
 
   // TODO: use date to get slots and render
 

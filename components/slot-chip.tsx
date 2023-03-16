@@ -4,8 +4,9 @@ import { useMutation,useQueryClient } from "react-query";
 import { deleteSlot } from "../api/api";
 import { useState } from "react";
 import clsx from "clsx";
+import dayjs from "dayjs";
 
-function SlotChip({ slot,canDelete,toggleSlotSelection}: { slot: any,canDelete: boolean,toggleSlotSelection:any }) {
+function SlotChip({ slot,canDelete,toggleSlotSelection}: { slot: any,canDelete: boolean,toggleSlotSelection?:any }) {
 
   const [selected,setSelected] = useState(false);
 
@@ -16,17 +17,9 @@ function SlotChip({ slot,canDelete,toggleSlotSelection}: { slot: any,canDelete: 
 
   const queryClient = useQueryClient();
 
-  const stime = new Date(slot.stime).toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  });
+  const stime = dayjs(new Date(slot.stime)).format("HH:mm") ;
 
-  const etime = new Date(slot.etime).toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  });
+  const etime = dayjs(new Date(slot.etime)).format("HH:mm")
 
   const deleteSlotMutation = useMutation(deleteSlot, {
     onSuccess: () => {
