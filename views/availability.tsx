@@ -16,10 +16,10 @@ function Availability({
   const [date, setDate] = useState(dayjs());
   const [show, setShow] = useState(false);
 
-  const handleDateChange = (e: any, selectedDate: dayjs.Dayjs) => {
+  const handleDateChange = (e: any, selectedDate: Date) => {
     if (e.type === "set") {
-      setDate(selectedDate);
       setShow(false);
+      setDate(dayjs(selectedDate));
     } else if (e.type === "dismissed") {
       setShow(false);
     }
@@ -30,7 +30,7 @@ function Availability({
   };
 
   return (
-    <View className="w-full border border-red-500">
+    <View className="w-full  border-red-500">
       <Header />
       <View className="border-black mt-4 flex flex-col">
         <Text className="text-2xl font-semibold text-center">

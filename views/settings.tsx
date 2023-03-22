@@ -90,8 +90,8 @@ function TimeSelect({
 
   const handleDateChange = (e: any, selectedDate: Date) => {
     if (e.type === "set") {
-      handleTimeUpdate(dayjs(selectedDate));
       setShow(false);
+      handleTimeUpdate(dayjs(selectedDate));
     } else if (e.type === "dismissed") {
       setShow(false);
     }

@@ -32,6 +32,8 @@ function AddAvailability({
     }
   };
 
+  
+
   const handleAddAvailability = async () =>{
     if(selectedSlots.size === 0) {
       console.log("Please select at least one slot");

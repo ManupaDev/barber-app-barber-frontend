@@ -11,7 +11,7 @@ dayjs.extend(advancedFormat);
 function Card({ preview, date }: { preview: boolean; date: dayjs.Dayjs }) {
   // TODO: use date to get slots and render
   const { isLoading: isAvailabilityLoading, data: availability } = useQuery(
-    ["availabilities", date.toISOString()],
+    ["availabilities", date],
     () => getAvailabilityByDate(date.toISOString())
   );
 
