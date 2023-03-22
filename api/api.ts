@@ -1,7 +1,8 @@
 import axios from "axios";
 
+
 const api = axios.create({
-  baseURL: "http://192.168.8.196:8000/api",
+  baseURL: "http://192.168.1.2:8000/api",
 });
 
 export const getAllSlots = async () => {
@@ -36,10 +37,22 @@ export const deleteSlot = async (deletedSlot) => {
 };
 
 export const createAvailability = async (availability) => {
-  console.log(availability);
+  
   try {
     const res = await api.post("/availabilities", availability);
     return res.data.newAvailability;
+  } catch (error) {
+    throw new Error("Unable to connect to the server");
+  }
+};
+
+export const getAvailabilityByDate = async (date:string) => {
+  
+  try {
+    const res = await api.get(`/availabilities?date=${date}`);
+    return res.data.availability;
+    
+    
   } catch (error) {
     throw new Error("Unable to connect to the server");
   }
