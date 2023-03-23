@@ -15,7 +15,6 @@ export const getAllSlots = async () => {
 };
 
 export const createSlot = async (slot) => {
-  console.log(slot);
   
   try {
     const res = await api.post("/slots", slot);

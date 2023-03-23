@@ -47,8 +47,8 @@ function AddAvailability({
 
   const handleDateChange = (e: any, selectedDate: Date) => {
     if (e.type === "set") {
-      setDate(dayjs(selectedDate));
       setShow(false);
+      setDate(dayjs(selectedDate));
     } else if (e.type === "dismissed") {
       setShow(false);
     }
